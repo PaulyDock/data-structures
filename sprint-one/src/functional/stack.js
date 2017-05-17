@@ -1,6 +1,3 @@
-//const _ = require('../../../lib/underscore/underscore');
-//var _ = require('/c/Users/Paul Dockery/dev/hack-reactor/junior/hrsf78-data-structures/lib/underscore');
-
 var Stack = function() {
   var someInstance = {};
   var storage = {};
@@ -13,11 +10,8 @@ var Stack = function() {
 
   someInstance.pop = function() {
     if (stackSize > 0) {
-      //storage[stackSize.toString()] = undefined;
-      //console.log(JSON.stringify(storage));
       let poppedValue = storage[stackSize.toString()];
       delete storage[stackSize.toString()];
-      //console.log(JSON.stringify(storage));
       stackSize--;
       return poppedValue;
     }
@@ -26,21 +20,6 @@ var Stack = function() {
   someInstance.size = function() {
     return stackSize;
   };
-  //   let count = 0;
-  //   for (prop in storage) {
-  //     if (storage.hasOwnProperty(prop)) {
-  //       count++;
-  //     }
-  //   }
-  //   return count;
-  // };
   
   return someInstance;
 };
-
-
-/*var objLength = function(obj) {
-  let count = 0;
-  _.each(obj, () => count++);
-  return count;
-};*/
