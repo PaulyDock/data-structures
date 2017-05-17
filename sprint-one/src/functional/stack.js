@@ -7,14 +7,19 @@ var Stack = function() {
   var stackSize = 0;
 
   someInstance.push = function(value) {
+    stackSize++;
     storage[stackSize.toString()] = value;
-    stackSize++;    
   };
 
   someInstance.pop = function() {
     if (stackSize > 0) {
-      storage[stackSize.toString()] = null;
+      //storage[stackSize.toString()] = undefined;
+      //console.log(JSON.stringify(storage));
+      let poppedValue = storage[stackSize.toString()];
+      delete storage[stackSize.toString()];
+      //console.log(JSON.stringify(storage));
       stackSize--;
+      return poppedValue;
     }
   };
 
