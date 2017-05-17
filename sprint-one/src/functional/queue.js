@@ -4,6 +4,8 @@ var Queue = function() {
   var queueSize = 0;
 
   someInstance.enqueue = function(value) {
+    queueSize++;
+    storage[queueSize.toString()] = value;
   };
 
   someInstance.dequeue = function() {
