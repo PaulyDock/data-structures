@@ -4,9 +4,15 @@ var Stack = function() {
   var storage = {};
 
   someInstance.push = function(value) {
+    stackSize++;
+    storage[stackSize] = value;  
   };
 
   someInstance.pop = function() {
+    let poppedValue = storage[stackSize];
+    delete storage[stackSize];
+    stackSize--;
+    return poppedValue;
   };
 
   someInstance.size = function() {
