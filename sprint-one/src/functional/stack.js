@@ -12,24 +12,30 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
+    if (stackSize > 0) {
+      storage[stackSize.toString()] = null;
+      stackSize--;
+    }
   };
 
   someInstance.size = function() {
-  //return objLength(storage);
-    let count = 0;
-    for (prop in storage) {
-      if (storage.hasOwnProperty(prop)) {
-        count++;
-      }
-    }
-    return count;
+    return stackSize;
   };
+  //   let count = 0;
+  //   for (prop in storage) {
+  //     if (storage.hasOwnProperty(prop)) {
+  //       count++;
+  //     }
+  //   }
+  //   return count;
+  // };
+  
   return someInstance;
 };
 
 
-var objLength = function(obj) {
+/*var objLength = function(obj) {
   let count = 0;
   _.each(obj, () => count++);
   return count;
-};
+};*/
