@@ -9,14 +9,16 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    let poppedValue = storage[stackSize];
-    delete storage[stackSize];
-    stackSize--;
-    return poppedValue;
+    if (stackSize > 0) {
+      let poppedValue = storage[stackSize];
+      delete storage[stackSize];
+      stackSize--;
+      return poppedValue;
+    }
   };
 
   someInstance.size = function() {
-  return stackSize;
+    return stackSize;
   };
 
   return someInstance;
