@@ -32,3 +32,4 @@ Queue.prototype.shift = function() {
   }
   delete this.storage[this.queueSize];
 };
+
