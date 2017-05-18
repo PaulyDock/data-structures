@@ -6,7 +6,7 @@ var Stack = function() {
   stackModel.stackSize = 0;
   return stackModel;
 };
-
+ 
 var stackMethods = {};
 
 stackMethods.push = function(value) {
