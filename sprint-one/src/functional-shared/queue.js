@@ -9,7 +9,7 @@ var Queue = function() {
 var queueMethods = {};
 
 queueMethods.size = function() {
-  return queueSize;
+  return this.queueSize;
 };
 
 queueMethods.enqueue = function(value) {
@@ -18,12 +18,20 @@ queueMethods.enqueue = function(value) {
 };
 
 queueMethods.dequeue = function() {
-  let dequeuedValue = this.storage[1];
-  this.shift();
-  
+  if (this.queueSize > 0) {
+    let dequeuedValue = this.storage[1];
+    this.shift();
+    this.queueSize--;
+    return dequeuedValue;
+  }
 };
 
 queueMethods.shift = function() {
-//  for (let i = 1)
+  for (let i = 1; i <= this.queueSize; i++) {
+    if (this.storage[i + 1]) {
+      this.storage[i] = this.storage[i + 1];
+    }
+  }
+  delete this.storage[this.queueSize];
 };
 
