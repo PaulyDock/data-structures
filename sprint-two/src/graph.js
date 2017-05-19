@@ -13,7 +13,6 @@ Graph.prototype.addNode = function(node) {
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-//  return _.contains(this.nodes, nodes);
   return (node in this.nodes);
 };
 
@@ -37,6 +36,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 Graph.prototype.addEdge = function(fromNode, toNode) {
   this.nodes[fromNode].push(toNode);
   this.nodes[toNode].push(fromNode);
+  console.log (fromNode, toNode, this.nodes);
 };
 
 // Remove an edge between any two specified (by value) nodes.
@@ -49,6 +49,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  _.each(this.nodes, (key, node) => {
+    return cb(node);
+  });
 };
 
 /*
