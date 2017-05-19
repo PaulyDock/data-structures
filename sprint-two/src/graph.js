@@ -3,7 +3,6 @@
 // Instantiate a new graph
 var Graph = function() {
   this.nodes = {};
-    //index: [index, index, index]
 };
 
 // Add a node to the graph, passing in the node's value.
@@ -36,7 +35,6 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 Graph.prototype.addEdge = function(fromNode, toNode) {
   this.nodes[fromNode].push(toNode);
   this.nodes[toNode].push(fromNode);
-  console.log (fromNode, toNode, this.nodes);
 };
 
 // Remove an edge between any two specified (by value) nodes.
