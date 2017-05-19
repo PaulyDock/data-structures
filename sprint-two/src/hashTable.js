@@ -7,43 +7,51 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  var formerTuples = this.retrieve(k);
-  console.log('inserting ', formerTuples, index, [k, v]);
-  if (!formerTuples) {  
-    this._storage.set(index, [[k, v]]);
+  let tuples = this.getTuples(k);
+  
+  if (!tuples) {
+    tuples = [[k, v]];
   } else {
-    formerTuples.push([k, v]);
-    this._storage.set(index, formerTuples);
+    const location = this.find(k);
+    if (location === undefined) {
+      tuples.push([k, v]);
+    } else {
+      tuples[location][1] = v;
+    }
   }
-  console.log('get after insert', this._storage.get(index));
-  //console.log('inserting ', formerTuples, index, [k, v]);
+  this._storage.set(index, tuples);
 };
 
 HashTable.prototype.retrieve = function(k) {
-  var index = getIndexBelowMaxForKey(k, this._limit);
-  var retrievedBucket = this._storage.get(index);
-  console.log('retrieving ', index, retrievedBucket);
-  if (retrievedBucket) {
-    for (let i = 0; i < retrievedBucket.length; i++) {
-      if (retrievedBucket[i][0] === k) {
-        console.log('retrieved ', retrievedBucket[i][1]);
-        return retrievedBucket[i][1];
-      }
-    }
-  }
+  let tuples = this.getTuples(k);
+  const location = this.find(k);
+  return location !== undefined ? tuples[location][1] : undefined;
 };
 
 HashTable.prototype.remove = function(k) {
+  let tuples = this.getTuples(k);
+  const location = this.find(k);
+  if (location !== undefined) {
+    tuples.splice(location, 1);
+  }
+};
+
+HashTable.prototype.getTuples = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.set(index, undefined);
+  return this._storage.get(index);
 };
 
-HashTable.prototype.tupleLookup = function(v) {
-  
-
+HashTable.prototype.find = function(k) {
+  let tuples = this.getTuples(k);
+  for (let i = 0; i < tuples.length; i++) {
+    if (tuples[i][0] === k) {
+      return i;
+    }
+  }
+  return undefined;
 };
 
-
+ 
 
 /*
  * Complexity: What is the time complexity of the above functions?
