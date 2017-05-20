@@ -32,6 +32,10 @@ describe('hashTable', function() {
   it('should not contain values that were removed', function() {
     hashTable.insert('Steven', 'Tyler');
     hashTable.remove('Steven');
+    // hashTable.insert('Steven', 'Tyler');
+    // hashTable.insert('Steven', 'Tyler');
+    // hashTable.insert('Steven', 'Tyler');
+
     expect(hashTable.retrieve('Steven')).to.equal(undefined);
   });
 
@@ -46,7 +50,7 @@ describe('hashTable', function() {
     expect(hashTable.retrieve(v2)).to.equal(v2);
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
-
+/*
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {
@@ -73,4 +77,5 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+  */
 });

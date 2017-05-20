@@ -56,11 +56,3 @@ HashTable.prototype.find = function(k) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-/*
-  limitedArray.each = function(callback) {
-    for (var i = 0; i < storage.length; i++) {
-      callback(storage[i], i, storage);
-    }
-  };
-*/

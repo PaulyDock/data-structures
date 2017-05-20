@@ -5,7 +5,11 @@ var BinarySearchTree = function(value) {
 
 
 BinarySearchTree.prototype.insert = function(value) {
-
+  if (value > node) {
+    this.right = value;
+  } else {
+    this.left = value;
+  }
 };
 
 
@@ -17,6 +21,7 @@ BinarySearchTree.prototype.contains = function(value) {
 BinarySearchTree.prototype.depthFirstLog = function(callback) {
 
 };
+
 
 
 
