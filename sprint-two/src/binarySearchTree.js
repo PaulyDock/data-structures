@@ -5,10 +5,13 @@ var BinarySearchTree = function(value) {
 
 
 BinarySearchTree.prototype.insert = function(value) {
-  if (value > node) {
-    this.right = value;
+  if (this.nodeValue) {
+    if (value > this.nodeValue) {
+      this.insert(this.right);
+    } else {
+      this.insert(this.left);
+    }
   } else {
-    this.left = value;
   }
 };
 
