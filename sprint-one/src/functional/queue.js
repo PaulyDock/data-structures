@@ -2,12 +2,6 @@ var Queue = function() {
   var someInstance = {};
   var storage = {};
   var queueSize = 0;
-<<<<<<< HEAD
-
-  someInstance.enqueue = function(value) {
-    queueSize++;
-    storage[queueSize.toString()] = value;
-=======
 
   someInstance.shift = function() {
     for (let i = 1; i <= queueSize; i++) {
@@ -21,7 +15,6 @@ var Queue = function() {
   someInstance.enqueue = function(value) {
     queueSize++;
     storage[queueSize] = value;
->>>>>>> 4b2ec3bf8741cb2ee01a6614e8a44f4f6caee685
   };
 
   someInstance.dequeue = function() {
